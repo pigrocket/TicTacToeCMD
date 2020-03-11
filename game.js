@@ -30,7 +30,27 @@ const state = {
 }
 
 const checkForWinner = (grid) => {
+  for (let i = 0; i < 3; i++) {
+    if (grid[i][0] === grid[i][1] && grid[i][0] === grid[i][2]) {
+      winner(state.playerturn)
+    }
+  }
+  for (let i = 0; i < 3; i++) {
+    if (grid[0][i] === grid[1][i] && grid[0][i] === grid[2][i]) {
+      winner(state.playerturn)
+    }
+  }
+  if (grid[0][0] === grid[1][1] && grid[1][1] === grid[2][2]) {
+    winner(state.playerturn)
+  }
+  if (grid[2][0] === grid[1][1] && grid[1][1] === grid[0][2]) {
+    winner(state.playerturn)
+  }
+}
 
+const winner = (player) => {
+  process.stdout.write('\n Player ' + state.playerturn + ' wins!')
+  process.exit();
 }
 
 const drawGrid = (grid) => {
